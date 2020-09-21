@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap'); */
+
+body{
+    width: 1600px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 52.4%;
+    color: white;
+    align-items: center;
+    margin: 1.5% auto;
+    font-size: 13px;
+    letter-spacing: 0.023rem;
+}
+button{
+    cursor: pointer;
+}
+
+
+li:first-child {
+
+    font-weight: 900;
+    z-index: 1;
+    margin-left: 12.2%;
+    padding: 3px 0 1px 0;
+    border-bottom: 1.2px white solid;
+}
+
+li:nth-child(2) {
+    margin-left: -2px;
+    z-index: 1;
+}
+li:nth-child(3) {
+    padding-left: 14px;
+    z-index: 1;
+}
+li:nth-child(4) {
+    padding-left: 12px;
+    z-index: 1;
+}
+li:nth-child(5) {
+    margin-right: 18.5%;
+    z-index: 1;
+}
+.marginHeadList{
+    margin-left: 50%;
+    z-index: 1;
+}
+
+
+.yourLife{
+    position: absolute;
+    top: 0;
+}
+.textPage1{
+    position: absolute;
+    top: 176px;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+h1{
+    font-size: 64px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 4.2px;
+    margin-bottom: 20px;
+}
+.lifeIs{
+    width: 28.8%;
+    margin: 0 auto;
+    font-size: 17.8px;
+    line-height: 25px;
+    letter-spacing: 0.1px;
+}
+.getButton{
+    color: white;
+    background-color: #00AFDB;
+    padding: 15px 47px;
+    margin-top: 29.4px;
+    border: none;
+    letter-spacing: -0.2px;
+
+}
+.sosial{
+    margin-top: 11.5%;
+}
+.sosial img{
+    padding: 0 13px;
+    cursor: pointer;
+}
+
+.reppresent{
+    display: flex;
+    align-items: center;
+    width: 67%;
+    margin: 49.5% auto 8.7% auto;
+}
+.textRepr{
+    margin-top: -7.8%;
+    margin-left: 4px;
+    letter-spacing: 1px;
+    margin-right: 23.6%;
+    height: 190px;
+}
+
+.childTextRepr{
+    font-size: 14px;
+    letter-spacing: 0px;
+    margin-top: 20px;
+    line-height: 20px;
+}
+.brep{
+    margin: 16.5px 0px 0px 1px;
+}
+.community{
+    height: 504px;
+    background-color: #F5F6F7;
+    display: flex;
+}
+.leftcom{
+    text-align: center;
+    margin-left: 16%;
+    margin-top: 9.7%;
+}
+.leftcom h4{
+    letter-spacing: 3px;
+    font-size: 15px;
+    margin-top: 16.4px;
+    margin-left: 18px;
+}
+.leftcom p{
+    margin-top: -7.7px;
+    font-size: 14px;
+    margin-left: 16px;
+    line-height: 20px;
+}
+.risghtcom span{
+        margin: 8.85% 0 -9.1% 77.8%;
+        font-size: 18px;
+        display: block;
+}
+.lt{position: absolute;
+    width: 8px;
+    height: 8px;
+    left: 0px;
+    top: 10px;
+    
+    border: 2px solid #373737;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transform: rotate(-45deg);}
+.slider{
+    margin-top: 13.5%;
+    margin-left: 15.8%;
+}
+.textSlider{
+    position: absolute;
+    margin-left: 690px;
+    margin-top: 82px;
+    width: 80px;
+    font-size: 17px;
+}
+.textSlider img:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.childimpTextLeft{
+    font-size: 14px;
+    margin: 20px 0 13px 1px;
+    line-height: 20px;
+}
+.impl{
+    margin: 17px 0px 0px 1px;
+    padding: 16px 46px 15px 47px;
+    letter-spacing: -0.3px;
+}
+.sugnUp{
+    position: absolute;
+    color: white;
+    margin: 179px 0 0 610px;
+    width: 100%;
+    letter-spacing: 1px;
+}
+.formSignUp{
+    margin-top: 30px;
+}
+.formSignUp input{
+    padding: 14px 144px 12px 21px;
+    margin-left: -13px;
+    font-size: 14px;
+    margin: 0 -4px 0 -13px;
+}
+.formSignUp button{
+    background-color: #00AFDB;
+    border: none;
+    width: 66px;
+    height: 46.5px;
+}
+
+.buttonDownload{
+    margin-top: 31px;
+    display: flex;
+    justify-content: center;
+}
+.downl{
+    background-color: #00AFDB;
+    border: none;
+    color: white;
+    padding: 0;
+    display: flex;
+    width: 186px;
+    height: 46px;
+}
+.downl img{
+    background-color: #009CC2;
+    margin-bottom: -3px;
+    padding: 13px 20px 13px 22px;
+}
+.downloadText{
+    font-size: 14px;
+    margin-top: 22px;
+    line-height: 19px;
+}
+.IOS{
+    margin: 0px 30px 0 0px;
+
+}
+.downl b{
+    padding: 5.4px 18px 0px 18px;
+    margin-bottom: 14px;
+    margin-top: 10px;
+    letter-spacing: -0.3px;
+}
+.android b{
+    padding: 5px 18px 0px 16px;
+    letter-spacing: -0.2px;
+}
+.android img{
+    padding: 13px 20px 10px 19px;
+}
+
+footer{
+    background-color: #000000;
+    height: 185px;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.linksFoot{
+    color: white;
+    margin: 0 0px 0 160px;
+    font-size: 14px;
+    padding-top: 75px;
+}
+.linksFoot img{
+    padding: 0 17px 0 16px;
+}
+button:hover{
+    background-color: #009CC2;;
+}
