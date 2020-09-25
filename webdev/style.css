@@ -104,13 +104,13 @@ h1{
     margin-top: -7.8%;
     margin-left: 4px;
     letter-spacing: 1px;
-    margin-right: 23.6%;
+    /* margin-right: 23.6%; */
     height: 190px;
 }
 
 .childTextRepr{
     font-size: 14px;
-    letter-spacing: 0px;
+    letter-spacing: 0.15px;
     margin-top: 20px;
     line-height: 20px;
 }
@@ -138,6 +138,7 @@ h1{
     font-size: 14px;
     margin-left: 16px;
     line-height: 20px;
+    letter-spacing: 0.2px;
 }
 .risghtcom span{
         margin: 8.85% 0 -9.1% 77.8%;
@@ -160,8 +161,8 @@ h1{
 }
 .textSlider{
     position: absolute;
-    margin-left: 690px;
-    margin-top: 82px;
+    margin-left: 692px;
+    margin-top: 80.5px;
     width: 80px;
     font-size: 17px;
 }
@@ -173,6 +174,7 @@ h1{
     font-size: 14px;
     margin: 20px 0 13px 1px;
     line-height: 20px;
+    letter-spacing: 0.18px;
 }
 .impl{
     margin: 17px 0px 0px 1px;
@@ -182,24 +184,23 @@ h1{
 .sugnUp{
     position: absolute;
     color: white;
-    margin: 179px 0 0 610px;
-    width: 100%;
+    margin: 180px 0 0 610px;
     letter-spacing: 1px;
 }
 .formSignUp{
-    margin-top: 30px;
+    margin-top: 27px;
 }
 .formSignUp input{
-    padding: 14px 144px 12px 21px;
-    margin-left: -13px;
+    padding: 17px 150px 14px 23px;
     font-size: 14px;
-    margin: 0 -4px 0 -13px;
+    margin: 0px -7px 0px -14px;
+    border: none;
 }
+
 .formSignUp button{
+    padding: 16px 24px 15px 25px;
     background-color: #00AFDB;
     border: none;
-    width: 66px;
-    height: 46.5px;
 }
 
 .buttonDownload{
@@ -263,4 +264,9 @@ a{
 }
 button:hover{
     background-color: #009CC2;;
+}
+.liText:hover{
+    font-weight: 900;
+    padding: 3px 0 1px 0;
+    border-bottom: 1.2px white solid;
 }
