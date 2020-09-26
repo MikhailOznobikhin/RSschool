@@ -22,10 +22,11 @@ class Calculator {
     }
   
     chooseOperation(operation) {
-      if (this.currentOperand === '') return;
-      if (this.previousOperand !== '' && this.previousOperand !== '') {
-        this.compute();
-      }
+        if (this.currentOperand === '') return;
+        if (this.previousOperand !== '' && this.previousOperand !== '') {
+            this.compute();
+            
+        }
       this.operation = operation;
       this.previousOperand = this.currentOperand;
       this.currentOperand = '';
@@ -38,19 +39,22 @@ class Calculator {
       if (isNaN(prev) || isNaN(current)) return;
       switch (this.operation) {
         case '+':
-          computation = prev + current;
-          break
+            computation = (prev*100 + current*100)/100;
+            break
         case '-':
-          computation = prev - current;
-          break
+            computation = (prev*100 - current*100)/100;
+            break
         case '*':
-          computation = prev * current;
-          break
+            computation = (prev*100) * (current*100)/(100*100);
+            break
         case '÷':
-          computation = prev / current;
-          break
+            computation = prev / current;
+            break
+        case '^':
+            computation = prev ** current;
+            break  
         default:
-          return;
+            return;
       }
       this.readyToReset = true;
       this.currentOperand = computation;
@@ -85,6 +89,12 @@ class Calculator {
         this.previousOperandTextElement.innerText = ''
       }
     }
+
+    sqrtCompute(){
+        let a = Math.sqrt(parseFloat(currentOperandTextElement.innerText))
+        this.currentOperand = a
+        currentOperandTextElement.innerText = a
+    }
   }
   
   
@@ -95,7 +105,8 @@ class Calculator {
   const allClearButton = document.querySelector('[data-all-clear]');
   const previousOperandTextElement = document.querySelector('[data-previous-operand]');
   const currentOperandTextElement = document.querySelector('[data-current-operand]');
-  
+  const sqrtButton = document.querySelector('[data-sqrt]')
+
   const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
   
   numberButtons.forEach(button => {
@@ -132,4 +143,8 @@ class Calculator {
   deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
+  })
+
+  sqrtButton.addEventListener('click', button => {
+    calculator.sqrtCompute();
   })
