@@ -22,10 +22,13 @@ class Calculator {
     }
   
     chooseOperation(operation) {
+        if(operation === '√'){
+            this.operation = '√'
+            this.compute();
+        }
         if (this.currentOperand === '') return;
         if (this.previousOperand !== '' && this.previousOperand !== '') {
-            this.compute();
-            
+            this.compute();  
         }
       this.operation = operation;
       this.previousOperand = this.currentOperand;
@@ -36,6 +39,15 @@ class Calculator {
       let computation;
       const prev = parseFloat(this.previousOperand);
       const current = parseFloat(this.currentOperand);
+      
+      if (this.operation === '√'){
+        computation = Math.sqrt(current);
+        this.readyToReset = true;
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+      }
+
       if (isNaN(prev) || isNaN(current)) return;
       switch (this.operation) {
         case '+':
@@ -89,12 +101,6 @@ class Calculator {
         this.previousOperandTextElement.innerText = ''
       }
     }
-
-    sqrtCompute(){
-        let a = Math.sqrt(parseFloat(currentOperandTextElement.innerText))
-        this.currentOperand = a
-        currentOperandTextElement.innerText = a
-    }
   }
   
   
@@ -105,8 +111,7 @@ class Calculator {
   const allClearButton = document.querySelector('[data-all-clear]');
   const previousOperandTextElement = document.querySelector('[data-previous-operand]');
   const currentOperandTextElement = document.querySelector('[data-current-operand]');
-  const sqrtButton = document.querySelector('[data-sqrt]')
-
+ 
   const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
   
   numberButtons.forEach(button => {
@@ -143,8 +148,4 @@ class Calculator {
   deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
-  })
-
-  sqrtButton.addEventListener('click', button => {
-    calculator.sqrtCompute();
   })
