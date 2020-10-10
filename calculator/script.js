@@ -41,11 +41,14 @@ class Calculator {
       const current = parseFloat(this.currentOperand);
       
       if (this.operation === '√'){
+        if(current < 0){alert('Error'); calculator.clear()}
+        else{
         computation = Math.sqrt(current);
         this.readyToReset = true;
         this.currentOperand = computation;
         this.operation = undefined;
         this.previousOperand = '';
+        }
       }
 
       if (isNaN(prev) || isNaN(current)) return;
@@ -91,18 +94,22 @@ class Calculator {
       }
     }
   
-    updateDisplay() {
-      this.currentOperandTextElement.innerText =
-        this.getDisplayNumber(this.currentOperand)
-      if (this.operation != null) {
-        this.previousOperandTextElement.innerText =
-          `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
-      } else {
-        this.previousOperandTextElement.innerText = ''
+    updateDisplay(isSubstr = 0) {
+      console.log(this.operation)
+      if(isSubstr === 1){
+        localStorage.setItem('isSubstrL', 1);
+      }else{
+        this.currentOperandTextElement.innerText =
+          this.getDisplayNumber(this.currentOperand)
+        if (this.operation != null) {
+          this.previousOperandTextElement.innerText =
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        } else {
+          this.previousOperandTextElement.innerText = ''
+        }
       }
     }
   }
-  
   
   const numberButtons = document.querySelectorAll('[data-number]');
   const operationButtons = document.querySelectorAll('[data-operation]');
@@ -111,9 +118,10 @@ class Calculator {
   const allClearButton = document.querySelector('[data-all-clear]');
   const previousOperandTextElement = document.querySelector('[data-previous-operand]');
   const currentOperandTextElement = document.querySelector('[data-current-operand]');
+  const substractButton = document.querySelector('[data-substraction]');
  
   const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
-  
+
   numberButtons.forEach(button => {
     button.addEventListener("click", () => {
   
@@ -149,3 +157,26 @@ class Calculator {
     calculator.delete();
     calculator.updateDisplay();
   })
+
+  substractButton.addEventListener('click', button => {
+    a = document.querySelector('[data-previous-operand]').innerHTML.split('')
+    b = a[a.length -1]
+    console.log(b)
+    if(
+      b !== '+' || b !== '*' || b !== '÷'|| b !== '√'
+    ){
+      console.log(a)
+      console.log('вып')
+      document.querySelector('[data-current-operand]').innerText = '-';
+      calculator.currentOperand = '-'
+      calculator.updateDisplay(1)
+    }
+    if(b === '-'){
+      document.querySelector('[data-current-operand]').innerText = '';
+      calculator.currentOperand = ''
+      console.log('работай')
+    }
+  })
+
+
+
