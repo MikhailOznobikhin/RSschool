@@ -10,6 +10,9 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+a{
+    text-decoration: none;
+}
 
 .wrapper{
     display: flex;
@@ -38,6 +41,7 @@
     font-size: 3.3rem;
     letter-spacing: 0.12rem;
     line-height: 110%;
+    font-weight: 400;
 }
 
 .logo__subtitle{
@@ -45,7 +49,7 @@
     font-size: 1.5rem;
     letter-spacing: 0.1rem;
     line-height: 110%;
-    margin-top: 10px;
+    margin-top: 8px;
     text-align: center;
 }
 .menu{
@@ -71,7 +75,11 @@
     font-size: 1.5rem;
     line-height: 135%;
 }
-
+.list__link:hover{
+    border-bottom: 3px solid  #F1CDB3;
+    color: #FFFFFF;
+    cursor: pointer;
+}
 .lins__link_active{
     border-bottom: 3px solid  #F1CDB3;
 }
@@ -121,9 +129,15 @@
     border: none;
     background: #F1CDB3;
     width: 207px;
-    padding: 15px 45px 15px 45px;
+    padding: 15px 45px;
     letter-spacing: 0.1rem;
     font-size: 1.7rem;
+}
+.content-section__button:hover{
+    background: #fff;
+    cursor: pointer;
+    padding: 12px 39px;
+    border: 3px solid #F1CDB3;
 }
 
 .about{
@@ -193,6 +207,10 @@
     width: 52px;
     background: #fff;
 }
+.slider__button:hover{
+    background: #F1CDB3;
+    cursor: pointer;
+}
 
 .cards{
     display: flex;
@@ -205,6 +223,12 @@
     flex-direction: column;
     border-radius: 9px;
     padding-bottom: 29px;
+    transition: 0.5s;
+}
+.card:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor: pointer;
 }
 .card__title{
     font-size: 2rem;
@@ -235,6 +259,12 @@
     border: none;
     width: 263px;
     margin: 60px auto 100px auto;
+}
+.pets__button:hover{
+    background: #fff;
+    cursor: pointer;
+    padding: 12px 39px;
+    border: 3px solid #F1CDB3;
 }
 
 .help{
@@ -320,6 +350,7 @@
 }
 .number img{
     padding-right: 1.5rem; 
+    margin-top: 0;
 }
 .text_number{
     font-family: Georgia;
@@ -327,6 +358,11 @@
     line-height: 115%;
     letter-spacing: 0.06em;
     padding-right: 0;
+    text-decoration: none;
+    color: #545454;
+}
+.text_number:hover{
+    cursor: pointer;
 }
 .small__text{
     font-family: Arial;
@@ -340,7 +376,7 @@
     background: url(/assets/noise_transparent.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;;
     display: flex;
     justify-content: space-around;
-    padding-top: 4rem;
+    padding-top: 4.3rem;
 }
 .footer__title{
     font-size: 3.5rem;
@@ -369,7 +405,7 @@
    letter-spacing: 0.06em;
 }
 .email{
-    padding: 3.6rem 0 4rem 0;
+    padding: 3.8rem 0 4rem 0;
 }
 .footer__cont img{
     padding: 0 2.1rem 0 0;
@@ -378,5 +414,5 @@
     padding-left: 0.5rem;
 }
 .addres{
-    padding: 3rem 0 0.3rem 0;
+    padding: 3.3rem 0 0 0;
 }
