@@ -236,3 +236,147 @@
     width: 263px;
     margin: 60px auto 100px auto;
 }
+
+.help{
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    background: #FFFFFF;
+}
+.help__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1146px;
+    margin: 0 auto;
+    padding-bottom: 10rem;
+}
+.help__title{
+    font-family: Georgia;
+    font-size: 3.5rem;
+    letter-spacing: 0.22rem;
+    text-align: center;
+    color: #545454;
+    line-height: 130%;
+    font-weight: 400;
+}
+
+.help__item{
+    color: #545454;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    line-height: 115%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 6rem;
+}
+.help__item img{
+    margin-bottom: 28px;
+}
+
+.donation{
+    display: flex;
+    background: #F6F6F6;
+    justify-content: space-between;
+    padding-bottom: 10rem;
+}
+.donation__conteiner{
+    margin: 0 auto;
+    display: flex;
+    padding-top: 8.4rem;
+}
+.donation__conteiner img{
+    padding-right: 3rem;
+    margin-top: 0.6rem;
+}
+.donation__content{
+    max-width: 38rem;
+}
+.donation__title{
+    font-family: Georgia;
+    font-size: 3.5rem;
+    letter-spacing: 0.22rem;
+    color: #545454;
+    line-height: 130%;
+    font-weight: 400;
+}
+.donation__subtitle{
+    font-family: Georgia;
+    font-size: 1.5rem;
+    line-height: 110%;
+    padding-top: 1.8rem;
+    letter-spacing: 0.09rem;
+}
+.number{
+    display: flex;
+    background: #F1CDB3;
+    border-radius: 9px;
+    padding: 10px 15px;
+    width: 35rem;
+    margin-top: 1.7rem;
+}
+.number img{
+    padding-right: 1.5rem; 
+}
+.text_number{
+    font-family: Georgia;
+    font-size: 2rem;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    padding-right: 0;
+}
+.small__text{
+    font-family: Arial;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color:#B2B2B2;
+    padding-top: 2rem;
+}
+
+.footer{
+    background: url(/assets/noise_transparent.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 4rem;
+}
+.footer__title{
+    font-size: 3.5rem;
+    line-height: 130%;
+    font-family: Georgia;
+    letter-spacing: 0.22rem;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+.footer__cont{
+    width: 31rem;
+    padding-top: 1.6rem;
+}
+.footer__cont div{
+    display: flex;
+    align-items: center;
+}
+.contacts{
+    padding-left: 3rem;
+}
+.text{
+   color: #F1CDB3;
+   font-size: 2rem;
+   font-family: Georgia; 
+   line-height: 115%;
+   letter-spacing: 0.06em;
+}
+.email{
+    padding: 3.6rem 0 4rem 0;
+}
+.footer__cont img{
+    padding: 0 2.1rem 0 0;
+}
+.address{
+    padding-left: 0.5rem;
+}
+.addres{
+    padding: 3rem 0 0.3rem 0;
+}
