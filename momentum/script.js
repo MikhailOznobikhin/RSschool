@@ -6,6 +6,11 @@ const time = document.querySelector('.time'),
 
 // Options
 const showAmPm = true;
+const options = {
+  month: 'long',
+  day: 'numeric',
+  weekday: 'long'
+};
 
 // Show Time
 function showTime() {
@@ -14,16 +19,10 @@ function showTime() {
     min = today.getMinutes(),
     sec = today.getSeconds();
 
-  // Set AM or PM
-  const amPm = hour >= 12 ? 'PM' : 'AM';
-
-  // 12hr Format
-  hour = hour % 12 || 12;
-
   // Output Time
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
-    sec
-  )} ${showAmPm ? amPm : ''}`;
+  time.innerHTML = `
+  <p>${today.toLocaleString("ru", options) }</p>
+  ${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} `;
 
   setTimeout(showTime, 1000);
 }
@@ -38,21 +37,27 @@ function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
 
-  if (hour < 12) {
-    // Morning
-    document.body.style.backgroundImage =
-      "url('assets/images/morning/01.jpg')";
-    greeting.textContent = 'Good Morning, ';
-  } else if (hour < 18) {
-    // Afternoon
-    document.body.style.backgroundImage =
-      "url('assets/images/day/01.jpg')";
-    greeting.textContent = 'Good Afternoon, ';
-  } else {
+  if(hour >= 0 && hour < 6){
     // Evening
-    document.body.style.backgroundImage =
-      "url('assets/images/evening/01.jpg')";
-    greeting.textContent = 'Good Evening, ';
+    document.body.style.backgroundImage = "url('assets/images/night/01.jpg')";
+    greeting.textContent = 'Доброй ночи, ';
+    document.body.style.color = 'white';
+  }
+
+  if (hour >= 6 && hour < 12) {
+    // Morning
+    document.body.style.backgroundImage ="url('assets/images/morning/01.jpg')";
+    greeting.textContent = 'Доброе утро, ';
+  } 
+  if (hour >= 12 && hour < 18) {
+    // Afternoon
+    document.body.style.backgroundImage ="url('assets/images/day/01.jpg')";
+    greeting.textContent = 'Добрый день, ';
+  }
+  if(hour >= 18 && hour < 24){
+    // Evening
+    document.body.style.backgroundImage ="url('assets/images/evening/01.jpg')";
+    greeting.textContent = 'Добрый вечер, ';
     document.body.style.color = 'white';
   }
 }
@@ -74,7 +79,11 @@ function setName(e) {
       localStorage.setItem('name', e.target.innerText);
       name.blur();
     }
-  } else {
+  }else if(name.innerHTML === '' || name.innerHTML === null){
+    name.blur();
+    getName();
+  }
+  else {
     localStorage.setItem('name', e.target.innerText);
   }
 }
@@ -96,15 +105,27 @@ function setFocus(e) {
       localStorage.setItem('focus', e.target.innerText);
       focus.blur();
     }
-  } else {
+  }
+  else if(focus.innerHTML === '' || focus.innerHTML === null){
+    focus.blur();
+    getFocus();
+  }
+  else {
     localStorage.setItem('focus', e.target.innerText);
   }
+  console.log(focus.innerHTML)
+}
+
+function clearAll(e){
+  e.target.innerHTML = ''
 }
 
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
+name.addEventListener('click', clearAll);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+focus.addEventListener('click', clearAll);
 
 // Run
 showTime();
