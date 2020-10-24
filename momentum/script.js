@@ -67,6 +67,7 @@ function whatIsPeriod(hour){
 
 // Set Background and Greeting
 function setBgGreet() {
+  const img = document.createElement('img');
   let today = new Date(),
     hour = today.getHours();
     min = today.getMinutes();
@@ -74,14 +75,16 @@ function setBgGreet() {
 
   whatIsPeriod(hour)
   numImg = numImg + hour % 6;
-  // numImg = numImg+1
-  console.log('setBgGreet:  '+ numImg)
-  document.body.style.backgroundImage ="url('assets/images/"+dayPeriod+"/"+ numImg +".jpg')";
+  let src = "assets/images/"+dayPeriod+"/"+ numImg +".jpg"
+  img.src = src;
+  img.onload = () => {      
+    document.body.style.backgroundImage =`url(${src})`;
+  }; 
 }
 
 // Get Name
 function getName() {
-  if (localStorage.getItem('name') === null) {
+  if (localStorage.getItem('name') === null || localStorage.getItem('name') === '') {
     name.textContent = '[Enter Name]';
   } else {
     name.textContent = localStorage.getItem('name');
@@ -91,14 +94,18 @@ function getName() {
 // Set Name
 function setName(e) {
   if (e.type === 'keypress') {
-    // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('name', e.target.innerText);
-      name.blur();
+      if( e.target.innerText === ''){
+        getName();
+        name.blur();
+      }else{
+        localStorage.setItem('name', e.target.innerText);
+        name.blur();
+      }
     }
-  }else if(name.innerHTML === '' || name.innerHTML === null){
-    name.blur();
+  }else if(e.target.innerText === ''){
     getName();
+    name.blur();
   }
   else {
     localStorage.setItem('name', e.target.innerText);
@@ -107,7 +114,7 @@ function setName(e) {
 
 // Get Focus
 function getFocus() {
-  if (localStorage.getItem('focus') === null) {
+  if (localStorage.getItem('focus') === null || localStorage.getItem('focus') === '') {
     focus.textContent = '[Enter Focus]';
   } else {
     focus.textContent = localStorage.getItem('focus');
@@ -117,20 +124,21 @@ function getFocus() {
 // Set Focus
 function setFocus(e) {
   if (e.type === 'keypress') {
-    // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('focus', e.target.innerText);
-      focus.blur();
+      if( e.target.innerText === ''){
+         getFocus();
+        focus.blur();
+      }else{
+        localStorage.setItem('focus', e.target.innerText);
+        focus.blur();
+      }
     }
-  }
-  else if(focus.innerHTML === '' || focus.innerHTML === null){
-    focus.blur();
+  }else if( e.target.innerText === ''){
     getFocus();
-  }
-  else {
+   focus.blur();
+  }else {
     localStorage.setItem('focus', e.target.innerText);
   }
-  console.log(focus.innerHTML)
 }
 
 function clearAll(e){
@@ -150,8 +158,14 @@ function changeImg(){
       dayPeriod = per[0]
     }
   }
-  document.body.style.backgroundImage ="url('assets/images/"+dayPeriod+"/"+ numImg +".jpg')";
-  console.log(document.body.style.backgroundImage)
+  const img = document.createElement('img');
+  let src = "assets/images/"+dayPeriod+"/"+ numImg +".jpg"
+  img.src = src;
+  img.onload = () => {      
+    document.body.style.backgroundImage =`url(${src})`;
+  };
+
+  // document.body.style.backgroundImage ="url('assets/images/"+dayPeriod+"/"+ numImg +".jpg')";
   setTimeout(function() { button.disabled = false }, 1000);
 }
 
