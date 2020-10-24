@@ -2,13 +2,16 @@
 const time = document.querySelector('.time'),
   greeting = document.querySelector('.greeting'),
   name = document.querySelector('.name'),
-  focus = document.querySelector('.focus');
-  button = document.querySelector('.btn')
+  focus = document.querySelector('.focus'),
+  button = document.querySelector('.btn'),
+  buttonQ = document.querySelector('.btnQ');
 
 // counts
-let numImg = parseInt((Math.random() * 13)+1)
-let numImgMax = numImg + 6  
+let numImg = parseInt((Math.random() * 13)+1);
+let numImgMax = numImg + 6;
 let per = ['night','morning','day','evening'];
+
+
 
 // Options
 const showAmPm = true;
@@ -161,13 +164,37 @@ function changeImg(){
   const img = document.createElement('img');
   let src = "assets/images/"+dayPeriod+"/"+ numImg +".jpg"
   img.src = src;
-  img.onload = () => {      
-    document.body.style.backgroundImage =`url(${src})`;
-  };
-
-  // document.body.style.backgroundImage ="url('assets/images/"+dayPeriod+"/"+ numImg +".jpg')";
+  img.onload = () => {document.body.style.backgroundImage =`url(${src})`; };
   setTimeout(function() { button.disabled = false }, 1000);
 }
+
+
+// async function getQuote() {  
+//   const url = `https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand`;
+//   const res = await fetch(url);
+//   const data = await res.json(); 
+//   blockquote.textContent = data.quoteText;
+//   figcaption.textContent = data.quoteAuthor;
+// }
+// document.addEventListener('DOMContentLoaded', getQuote);
+// btn.addEventListener('click', getQuote);
+
+const url = `https://favqs.com/api/qotd`;
+const quote = document.querySelector('.quote'),
+  blockquote = document.querySelector('blockquote'),
+  figcaption = document.querySelector('figcaption');
+
+async function fetchAsyncTodos(){
+  buttonQ.disabled = true;
+  const response = await fetch(url)
+  const data = await response.json()
+  blockquote.innerText = data.quote.body
+  figcaption.innerText = data.quote.author
+  setTimeout(function() { buttonQ.disabled = false }, 1000);
+}
+
+
+
 
 
 name.addEventListener('keypress', setName);
@@ -177,9 +204,11 @@ focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 focus.addEventListener('click', clearAll);
 button.addEventListener('click', changeImg)
+buttonQ.addEventListener('click', fetchAsyncTodos)
 
 // Run
 showTime();
 setBgGreet();
 getName();
 getFocus();
+fetchAsyncTodos()
