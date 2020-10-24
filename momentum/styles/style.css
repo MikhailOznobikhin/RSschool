@@ -15,6 +15,8 @@ body {
   background-size: cover;
   color: #fff;
   transition: background-image 1s ease-in-out;
+  padding: 0;
+  margin: 0;
 }
 
 body:after {
@@ -40,56 +42,69 @@ h2 {
   margin-bottom: 0.5rem;
   opacity: 0.8;
 }
-p{
+
+p {
   font-size: 2rem;
 }
-.bt{
+
+.bt {
   width: 60px;
   height: 60px;
   border: 0;
-  background: url("assets/Button-PNG.png");
+  background: url("/assets/Button-PNG.png");
   background-size: contain;
   background-repeat: no-repeat;
   filter: grayscale(1);
   margin: 10px;
   transition: 1s;
 }
+
 .bt:hover {
   cursor: pointer;
   filter: grayscale(.8);
   transition: 1s;
 }
+
 .bt:active,
 .bt:focus {
   outline: 0;
 }
-.bt:active{
+
+.bt:active {
   transform: scale(1.02)
 }
+
 .quote {
   font: 1.2rem Georgia, serif;
-  margin: 2rem 0 ;
+  margin: 2rem 0;
   background: rgba(133, 133, 180, .3);
   padding: 1em;
   border-radius: 1em;
   display: flex;
   transition: 0.5s ease-in-out;
 }
+
 .quote figcaption,
 .quote blockquote {
   margin: 1em;
 }
+
 .quote figcaption {
   text-align: right;
 }
-.btn{
+
+.btn {
   position: absolute;
   margin: 0 0;
   top: 1rem;
   left: 1rem;
 }
-.btnQ{
+
+.btnQ {
   margin: auto 0;
+}
+.userGorod{
+  font-size: 1.5rem;
 }
 
 
