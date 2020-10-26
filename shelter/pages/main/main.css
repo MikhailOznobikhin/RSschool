@@ -24,6 +24,7 @@ a{
     width: 100%;
     position: absolute;
     top: 60px;
+    z-index: 2;
 }
 .menu{
     width: 443px;
@@ -32,6 +33,7 @@ a{
 .logo {
     display: flex;
     flex-direction: column;
+    z-index: 4;
 }
 
 .logo__title{
@@ -214,10 +216,12 @@ a{
 .cards{
     display: flex;
     margin: 0 8px;
+    max-width: 108rem;
+    overflow: hidden;
 }
 .card{
     background: #FAFAFA;
-    margin: 0 45px;
+    margin: 0 4.5rem 0 4.5rem;
     display: flex;
     flex-direction: column;
     border-radius: 9px;
@@ -415,9 +419,22 @@ a{
 .addres{
     padding: 3.3rem 0 0 0;
 }
+.slider__bottons-min{
+    display: none;
+}
+
 
 .burger{
     display: none;
+    z-index: 4;
+    transition: 1s;
+}
+.burgerHeader{
+    display: flex;
+    padding-left: 1rem;
+}
+.burgerMenu .burger{
+    transform: rotate(90deg);
 }
 .burgerMenu{
     width: 32rem;
@@ -425,13 +442,23 @@ a{
     flex-direction: column;
     position: fixed;
     right: 0;
-    background: #262425;
-    border-top-left-radius: 5rem; 
-    border-bottom-left-radius: 5rem;
-    transition: 1s linear;
+    top: 0;
+    background: #292929;
+    transition: 0.8s linear;
+    padding-top: 9rem;
+    height: 100vh;
+    z-index: 3;
     visibility: hidden;
-    opacity: 0;
+    opacity: 0; 
     transform: translate(100%); 
+}
+.burgerMenu .logo{
+    align-items: flex-start;
+    padding-right: 2rem;
+}
+.burgerMenu .logo__subtitle{
+    align-items: flex-start;
+    padding-left: 0.4rem;
 }
 .burgerMenu-open{
     visibility: visible;
@@ -440,18 +467,93 @@ a{
 }
 .burgerList{
     flex-direction: column;
-    padding: 3rem 0 3rem 3rem;
+    padding: 14rem 0 0 0;
 }
 .burgerList .list__item{
     width: max-content;
     flex-direction: column;
-    padding: 3rem 0 3rem 3rem;
+    padding: 2.4rem 0;
     align-items: center;
     margin: 0 auto;
 }
-
-.slider__bottons-min{
+.burgerList .list__link{
+    font-size: 3.2rem;
+}
+.covering-panel {
+    background: rgba(41, 41, 41, 0.6);
+    height: 100vh;                 
+    position: fixed;               
+    width: 100%;                   
+    z-index: 1;   
+    display: none;     
+}
+.popup{
+    position: fixed;
+    z-index: 4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FAFAFA;;
+    border-radius: 9px;
+    width: 90rem;
     display: none;
+}
+.popup__open{
+    display: block;
+}
+.popup__close{
+    position: absolute;
+    right: -4.1rem;
+    top: -5.3rem;
+    border: 1px solid #F1CDB3;
+    padding: 19px;
+    border-radius: 50%;
+    transition: 1s;
+}
+.popup__close:hover{
+    background-color: seashell;
+}
+.popup__content{
+    display: flex;
+}
+.popup__content h3{
+    font-family: Georgia;
+    font-size: 3.5rem;
+    line-height: 130%;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    padding-bottom: 1rem;
+}
+.popup__content h4{
+    font-family: Georgia;
+    font-size: 2rem;
+    line-height: 115%;
+    letter-spacing: 0.12rem;
+    font-weight: 400;
+    padding-bottom: 4rem;
+}
+.popup__content p{
+    font-family: Georgia;
+    font-size: 1.5rem;
+    line-height: 114%;
+    letter-spacing: 0.09rem;
+}
+.popup__content ul{
+    padding: 3.5rem 0 0 1.5rem;
+}
+.popup__content li{
+    font-size: 1.5rem;
+    line-height: 110%;
+    padding: 0.5rem 0.5rem;
+    letter-spacing: 0.2rem;
+}
+.popup__content img{
+    height: 50rem;
+    border-radius: 9px;
+}
+.popup__text{
+    width: 38rem;
+    padding: 5rem 0 0 3rem;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
@@ -490,12 +592,13 @@ a{
     }
     .cards{
         margin: 0;
+        max-width: 62rem;
     }
     .card:last-child{
         display: none;
     }
     .card{
-        margin: 0 20px;
+        margin: 0 2rem 0 2rem;
     }
     .help__container{
         display: grid;
@@ -537,6 +640,15 @@ a{
         padding-top: 6rem;
         padding-right: 0;
         padding-left: 0;
+    }
+    .popup{
+        width: 70rem;
+    }
+    .popup__text{
+        padding: 5rem 0 0 0rem;
+    }
+    .popup__content img{
+        height: 40rem;
     }
 }
 @media (min-width: 320px) and (max-width: 767px) {
@@ -731,19 +843,11 @@ a{
     .cards{
         margin: 0 0 2rem;
         order: -1;
+        max-width: 32rem;
     }
     .card{
-        display: none;
+        margin: 0 2rem 0 2rem;
     }
-    .card:first-child{
-        display: flex;
-    }
-    .card{
-        margin: 0 20px;
-    }
-
- 
-   
     .footer{
         padding-top: 1.5rem;
     }
@@ -784,5 +888,15 @@ a{
     }
     .phone{
         padding-left: 3rem;
+    }
+
+    .popup{
+        width: 24rem;
+    }
+    .popup__content img{
+        display: none;
+    }
+    .popup__text{
+        padding: 1rem 0 0 1rem;
     }
 }
