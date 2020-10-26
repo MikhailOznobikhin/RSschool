@@ -419,6 +419,37 @@ a{
 .burger{
     display: none;
 }
+.burgerMenu{
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    background: #262425;
+    border-top-left-radius: 5rem; 
+    border-bottom-left-radius: 5rem;
+    transition: 1s linear;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(100%); 
+}
+.burgerMenu-open{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0%);
+}
+.burgerList{
+    flex-direction: column;
+    padding: 3rem 0 3rem 3rem;
+}
+.burgerList .list__item{
+    width: max-content;
+    flex-direction: column;
+    padding: 3rem 0 3rem 3rem;
+    align-items: center;
+    margin: 0 auto;
+}
+
 .slider__bottons-min{
     display: none;
 }
