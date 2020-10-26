@@ -7,6 +7,8 @@
     <link href="main.css" rel="stylesheet">
 </head>
 <body>
+    <div class="covering-panel"></div>
+
     <header class="header">
         <div class="wrapper">
             <a href="javascript: void(0)" class="logo">
@@ -16,10 +18,10 @@
             <nav class="menu">
                 <ul class="list">
                     <li class="list__item">
-                        <a class="list__link lins__link_active" href="../pages/main/main.html">About the shelter</a>
+                        <a class="list__link lins__link_active" href="main.html">About the shelter</a>
                     </li>
                     <li class="list__item">
-                        <a class="list__link list__link_disabled" href="../pages/pets/pets.html">Our pets</a>
+                        <a class="list__link list__link_disabled" href="../pets/pets.html">Our pets</a>
                     </li>
                     <li class="list__item">
                         <a class="list__link list__link_disabled" href="javascript: void(0)">Help the shelter</a>
@@ -33,10 +35,10 @@
             <div class="burgerMenu">
                 <ul class="list burgerList">
                     <li class="list__item">
-                        <a class="list__link lins__link_active" href="../pages/main/main.html">About the shelter</a>
+                        <a class="list__link lins__link_active" href="main.html">About the shelter</a>
                     </li>
                     <li class="list__item">
-                        <a class="list__link list__link_disabled" href="../pages/pets/pets.html">Our pets</a>
+                        <a class="list__link list__link_disabled" href="../pets/pets.html">Our pets</a>
                     </li>
                     <li class="list__item">
                         <a class="list__link list__link_disabled" href="javascript: void(0)">Help the shelter</a>
@@ -60,7 +62,7 @@
                             We offer to give a chance to a little and nice puppy with an extremely wide and open heart. He or she will love you more than anybody else in the world, you will see!
                         </p>
 
-                        <button type="button" class="content-section__button">
+                        <button type="button" onclick="document.location='../pets/pets.html'" class="content-section__button">
                             Make a friend</a>
                         </button>
                     </div>
@@ -89,33 +91,19 @@
             <div class="pets__content">
                 <h3 class="pets__title">Our friends who <br> are looking for a house</h3>
                 <div class="slider">
-                    <button class="slider__button"><img src="../../assets/Arrow.png" alt="arrow"></button>
+                    <button class="slider__button slider__left"><img src="../../assets/Arrow.png" alt="arrow"></button>
                     <div class="cards">
-                        <div class="card">
-                            <img src="../../assets/pets-katrine.png" alt="">
-                            <p class="card__title">Katrine</p>
-                            <button class="card__button">Learn more</button>
-                        </div>
-                        <div class="card">
-                            <img src="../../assets/pets-jennifer.png" alt="">
-                            <p class="card__title">Jennifer</p>
-                            <button class="card__button">Learn more</button>
-                        </div>
-                        <div class="card">
-                            <img src="../../assets/pets-woody.png" alt="">
-                            <p class="card__title">Woody</p>
-                            <button class="card__button">Learn more</button>
-                        </div>
+
                     </div>
-                    <button class="slider__button"><img src="../../assets/Arrow.png" alt="arrow" style="transform: rotate(180deg);"></button>
+                    <button class="slider__button slider__right"><img src="../../assets/Arrow.png" alt="arrow" style="transform: rotate(180deg);"></button>
                     
                     <div class="slider__bottons-min">
-                        <button class="slider__button"><img src="../../assets/Arrow.png" alt="arrow"></button>
-                        <button class="slider__button"><img src="../../assets/Arrow.png" alt="arrow" style="transform: rotate(180deg);"></button>    
+                        <button class="slider__button slider__leftM"><img src="../../assets/Arrow.png" alt="arrow"></button>
+                        <button class="slider__button slider__rightM"><img src="../../assets/Arrow.png" alt="arrow" style="transform: rotate(180deg);"></button>    
                     </div>
                 </div>
 
-                <button class="pets__button">Get to know the rest</button>
+                <button class="pets__button" onclick="document.location='../pets/pets.html'" >Get to know the rest</button>
 
             </div>
             

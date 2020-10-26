@@ -24,6 +24,7 @@ a{
     width: 100%;
     position: absolute;
     top: 60px;
+    z-index: 2;
 }
 .menu{
     width: 443px;
@@ -32,6 +33,7 @@ a{
 .logo {
     display: flex;
     flex-direction: column;
+    z-index: 4;
 }
 
 .logo__title{
@@ -214,10 +216,12 @@ a{
 .cards{
     display: flex;
     margin: 0 8px;
+    max-width: 108rem;
+    overflow: hidden;
 }
 .card{
     background: #FAFAFA;
-    margin: 0 45px;
+    margin: 0 4.5rem 0 4.5rem;
     display: flex;
     flex-direction: column;
     border-radius: 9px;
@@ -415,9 +419,22 @@ a{
 .addres{
     padding: 3.3rem 0 0 0;
 }
+.slider__bottons-min{
+    display: none;
+}
+
 
 .burger{
     display: none;
+    z-index: 4;
+    transition: 1s;
+}
+.burgerHeader{
+    display: flex;
+    padding-left: 1rem;
+}
+.burgerMenu .burger{
+    transform: rotate(90deg);
 }
 .burgerMenu{
     width: 32rem;
@@ -425,13 +442,23 @@ a{
     flex-direction: column;
     position: fixed;
     right: 0;
-    background: #262425;
-    border-top-left-radius: 5rem; 
-    border-bottom-left-radius: 5rem;
-    transition: 1s linear;
+    top: 0;
+    background: #292929;
+    transition: 0.8s linear;
+    padding-top: 9rem;
+    height: 100vh;
+    z-index: 3;
     visibility: hidden;
-    opacity: 0;
+    opacity: 0; 
     transform: translate(100%); 
+}
+.burgerMenu .logo{
+    align-items: flex-start;
+    padding-right: 2rem;
+}
+.burgerMenu .logo__subtitle{
+    align-items: flex-start;
+    padding-left: 0.4rem;
 }
 .burgerMenu-open{
     visibility: visible;
@@ -440,19 +467,27 @@ a{
 }
 .burgerList{
     flex-direction: column;
-    padding: 3rem 0 3rem 3rem;
+    padding: 14rem 0 0 0;
 }
 .burgerList .list__item{
     width: max-content;
     flex-direction: column;
-    padding: 3rem 0 3rem 3rem;
+    padding: 2.4rem 0;
     align-items: center;
     margin: 0 auto;
 }
-
-.slider__bottons-min{
-    display: none;
+.burgerList .list__link{
+    font-size: 3.2rem;
 }
+.covering-panel {
+    background: rgba(41, 41, 41, 0.6);
+    height: 100vh;                 
+    position: fixed;               
+    width: 100%;                   
+    z-index: 1;   
+    display: none;     
+}
+
 
 @media (min-width: 768px) and (max-width: 1279px) {
     .header{
@@ -490,12 +525,13 @@ a{
     }
     .cards{
         margin: 0;
+        max-width: 62rem;
     }
     .card:last-child{
         display: none;
     }
     .card{
-        margin: 0 20px;
+        margin: 0 2rem 0 2rem;
     }
     .help__container{
         display: grid;
@@ -731,19 +767,11 @@ a{
     .cards{
         margin: 0 0 2rem;
         order: -1;
+        max-width: 32rem;
     }
     .card{
-        display: none;
+        margin: 0 2rem 0 2rem;
     }
-    .card:first-child{
-        display: flex;
-    }
-    .card{
-        margin: 0 20px;
-    }
-
- 
-   
     .footer{
         padding-top: 1.5rem;
     }
