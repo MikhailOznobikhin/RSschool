@@ -28,13 +28,53 @@ function openBurger() {
         document.querySelector('.header').style.position = "fixed";
     }
 }
+function generatePopup(name) {
+    let dataPopup
+
+    currentDate.forEach(e => {
+        if (e.name === name) {
+            dataPopup = e
+        }
+    })
+
+    if (dataPopup === undefined) {
+        data.forEach(e => {
+            if (e.name === name) {
+                dataPopup = e
+            }
+        })
+    }
+
+    let inoculations = ""
+    let parasites = ""
+    let diseases = ""
+    dataPopup.inoculations.forEach(e => {
+        inoculations = `${inoculations} ${e},`
+    }) 
+    dataPopup.parasites.forEach(e => {
+        parasites = `${parasites} ${e},`
+    }) 
+    dataPopup.diseases.forEach(e => {
+        diseases = `${diseases} ${e},`
+    }) 
+
+    popup.children[1].children[0].src = dataPopup.img
+    popup.children[1].children[1].children[0].innerText = dataPopup.name;
+    popup.children[1].children[1].children[1].innerText = `${dataPopup.type} - ${dataPopup.breed}`;
+    popup.children[1].children[1].children[2].innerText = dataPopup.description;
+    popup.children[1].children[1].children[3].children[0].children[1].innerText = dataPopup.age;
+    popup.children[1].children[1].children[3].children[1].children[1].innerText = inoculations;
+    popup.children[1].children[1].children[3].children[2].children[1].innerText = diseases;
+    popup.children[1].children[1].children[3].children[3].children[1].innerText = parasites;
+    console.log(currentDate)
+}
 
 function openPopup(e = '') {
-    console.log(e)
     if (popup.classList.contains('popup__open')) {
         popup.classList.remove('popup__open');
         zatmen.style.display = "none";
     } else {
+        generatePopup(e.path[1].children[1].innerText)
         popup.classList.add('popup__open');
         zatmen.style.display = "block";
     }
@@ -72,22 +112,23 @@ function generateCard(e, last = true) {
     pbutton.innerText = 'Learn more'
     pimg.src = e.img
     ptext.innerText = e.name
-    pbutton.name = e.name
     pdiv.appendChild(pimg);
     pdiv.appendChild(ptext);
     pdiv.appendChild(pbutton);
-    
+
     if (last === true) {
         cards.appendChild(pdiv);
     } else {
         cards.prepend(pdiv);
     }
+
 }
 
 function setPets(data, last = true) {
     let a = rand(data.length)
     generateCard(data[a], last)
     currentDate.push(data.splice(a, 1)[0]);
+    addEven()
 }
 
 function startCards(data) {
@@ -96,7 +137,6 @@ function startCards(data) {
         setPets(data)
         j++;
     }
-    card = document.querySelectorAll('.card');
 }
 
 // Слайдер после генерации
@@ -184,13 +224,15 @@ sliderButtonRight.addEventListener('click', sliderR);
 sliderButtonLeftM.addEventListener('click', sliderL);
 sliderButtonRightM.addEventListener('click', sliderR);
 
-function addEven(){
-    console.log(card)
-    card.forEach(el => {
-        el.addEventListener('clicl', openPopup)
-    });    
+
+
+
+function addEven() {
+    card = document.querySelectorAll('.card')
+    for (let c of card) {
+        c.addEventListener('click', openPopup)
+    }
 }
-setTimeout(addEven,2000)
 
 burger.addEventListener('click', openBurger);
 popup__close.addEventListener('click', openPopup);
