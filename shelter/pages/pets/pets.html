@@ -7,6 +7,8 @@
     <link href="pets.css" rel="stylesheet">
 </head>
 <body>
+    <div class="covering-panel"></div>
+
     <header class="header">
         <div class="wrapper">
             <a href="../main/main.html" class="logo">
@@ -16,10 +18,10 @@
             <nav class="menu">
                 <ul class="list">
                     <li class="list__item">
-                        <a class="list__link list__link_disabled" href="../pages/main/main.html">About the shelter</a>
+                        <a class="list__link list__link_disabled" href="../main/main.html">About the shelter</a>
                     </li>
                     <li class="list__item">
-                        <a class="list__link lins__link_active" href="../pages/pets/pets.html">Our pets</a>
+                        <a class="list__link lins__link_active" href="pets.html">Our pets</a>
                     </li>
                     <li class="list__item">
                         <a class="list__link list__link_disabled" href="javascript: void(0)">Help the shelter</a>
@@ -29,55 +31,30 @@
                     </li>
                 </ul>
             </nav>
-            <img src="../../assets/Burger.png" alt="" class="burger">
+            <img src="../../assets/BurgerB.png" alt="" class="burger">
+            <div class="burgerMenu">
+                <ul class="list burgerList">
+                    <li class="list__item">
+                        <a class="list__link list__link_disabled" href="../main/main.html">About the shelter</a>
+                    </li>
+                    <li class="list__item">
+                        <a class="list__link lins__link_active" href="pets.html">Our pets</a>
+                    </li>
+                    <li class="list__item">
+                        <a class="list__link list__link_disabled" href="javascript: void(0)">Help the shelter</a>
+                    </li>
+                    <li class="list__item">
+                        <a class="list__link list__link_disabled" href="javascript: void(0)">Contacts</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 
     <main class="main">
         <h3 class="pets__page__title">Our friends who <br> are looking for a house</h3>
 
-        <div class="cards">
-            <div class="card">
-                <img src="../../assets/images/pets-katrine.png" alt="">
-                <p class="card__title">Katrine</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-jennifer.png" alt="">
-                <p class="card__title">Jennifer</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-woody.png" alt="">
-                <p class="card__title">Woody</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-sophia.png" alt="">
-                <p class="card__title">Sophia</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-timmy.png" alt="">
-                <p class="card__title">Timmy</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-charly.png" alt="">
-                <p class="card__title">Charly</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-scarlett.png" alt="">
-                <p class="card__title">Scarlett</p>
-                <button class="card__button">Learn more</button>
-            </div>
-            <div class="card">
-                <img src="../../assets/images/pets-freddie.png" alt="">
-                <p class="card__title">Freddie</p>
-                <button class="card__button">Learn more</button>
-            </div>
-        </div>
+        <div class="cards"></div>
 
         <div class="control">
             <button class="slider__button slider__button__arrow arrow-disable" disabled>&lt;&lt;</button>
@@ -127,6 +104,25 @@
               <img src="../../assets/footer-puppy.png" alt="puppy footer" class="footer__puppy">      
         </div>
         </footer>
-
+        <div class="popup">
+            <img src="../../assets/Vector.png" class="popup__close" alt="">
+            <div class="popup__content">
+                <img src="../../assets/images/pets-katrine.png" alt="">
+                <div class="popup__text">
+                    <h3>Jennifer</h3> 
+                    <h4>Dog - Labrador</h4>
+                    <p>
+                        Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys. 
+                    </p>
+                    <ul>
+                        <li><b>Age: </b><span>2 months</span></li>
+                        <li><b>Inoculations: </b><span>none</span></li>
+                        <li><b>Diseases: </b><span>none</span></li>
+                        <li><b>Parasites: </b><span>none</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <script src="pets.js"></script>
 </body>
 </html>
