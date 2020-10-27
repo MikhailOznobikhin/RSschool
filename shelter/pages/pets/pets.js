@@ -5,10 +5,6 @@ const zatmen = document.querySelector('.covering-panel');
 const popup__close = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 
-const sliderButtonLeft = document.querySelector('.slider__left');
-const sliderButtonRight = document.querySelector('.slider__right')
-const sliderButtonLeftM = document.querySelector('.slider__leftM');
-const sliderButtonRightM = document.querySelector('.slider__rightM');
 
 const cards = document.querySelector('.cards')
 let data;
@@ -19,7 +15,7 @@ function openBurger() {
     if (burgerMenu.classList.contains('burgerMenu-open')) {
         burgerMenu.classList.remove('burgerMenu-open');
         burger.style.transform = "rotate(0deg)";
-        document.querySelector('.header').style.position = "absolute";
+        document.querySelector('.header').style.position = "stiky";
         zatmen.style.display = "none";
     } else {
         burgerMenu.classList.add('burgerMenu-open');
@@ -121,7 +117,6 @@ function generateCard(e, last = true) {
     } else {
         cards.prepend(pdiv);
     }
-
 }
 
 function setPets(data, last = true) {
@@ -133,99 +128,11 @@ function setPets(data, last = true) {
 
 function startCards(data) {
     j = 0;
-    while (j < 3) {
+    while (j < 8) {
         setPets(data)
         j++;
     }
 }
-
-// Слайдер после генерации
-let i = 0;
-let b = 4.5;
-
-function sliderL() {
-    data.push(currentDate.splice(0, 1)[0])
-    setPets(data)
-
-    let card = document.querySelectorAll('.card')
-    let marginFirst = parseFloat(card[0].style.margin.split(' ')[3])
-
-    if (document.body.clientWidth >= 1280) {
-        if (isNaN(marginFirst) || i === 4.5) {
-            i = -36;
-            b = 9;
-        } else {
-            i = i + (-36)
-        }
-        if (i === 0) {
-            i = 4.5
-            b = 4.5
-        }
-    } else {
-        if (isNaN(marginFirst) || i === 2) {
-            i = -31;
-            b = 4;
-        } else {
-            i = i + (-31)
-        }
-        if (i === 0) {
-            i = 2
-            b = 2
-        }
-    }
-    card[0].style.margin = `0 ${b}rem 0 ${i}rem`
-}
-
-function sliderR() {
-    let card = document.querySelectorAll('.card')
-    let marginFirst = parseFloat(card[0].style.margin.split(' ')[3])
-    if (marginFirst < 0 && !isNaN(marginFirst)) {
-        if (document.body.clientWidth >= 1280) {
-            if (isNaN(marginFirst) || i === 4.5) {
-                i = 36
-            } else {
-                i = i - (-36)
-            }
-            if (i === 0) {
-                i = 4.5
-                b = 4.5
-            }
-        } else {
-            if (isNaN(marginFirst) || i === 2) {
-                i = 31
-            } else {
-                i = i - (-31)
-            }
-            if (i === 0) {
-                i = 2
-                b = 2
-            }
-        }
-    } else {
-        data.push(currentDate.splice(currentDate.length - 1, 1)[0])
-        setPets(data, false)
-
-        card = document.querySelectorAll('.card')
-        marginFirst = parseFloat(card[0].style.margin.split(' ')[3])
-        if (document.body.clientWidth >= 1280) {
-            i = 4.5
-            b = 4.5
-        } else {
-            i = 2
-            b = 2
-        }
-    }
-    card[0].style.margin = `0 ${b}rem 0 ${i}rem`
-}
-
-
-sliderButtonLeft.addEventListener('click', sliderL);
-sliderButtonRight.addEventListener('click', sliderR);
-sliderButtonLeftM.addEventListener('click', sliderL);
-sliderButtonRightM.addEventListener('click', sliderR);
-
-
-
 
 function addEven() {
     card = document.querySelectorAll('.card')
