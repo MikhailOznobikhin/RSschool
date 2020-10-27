@@ -46,13 +46,13 @@ function generatePopup(name) {
     let diseases = ""
     dataPopup.inoculations.forEach(e => {
         inoculations = `${inoculations} ${e},`
-    }) 
+    })
     dataPopup.parasites.forEach(e => {
         parasites = `${parasites} ${e},`
-    }) 
+    })
     dataPopup.diseases.forEach(e => {
         diseases = `${diseases} ${e},`
-    }) 
+    })
 
     popup.children[1].children[0].src = dataPopup.img
     popup.children[1].children[1].children[0].innerText = dataPopup.name;
@@ -141,9 +141,79 @@ function addEven() {
     }
 }
 
+
+const firstStr = document.querySelector('.firstStr');
+const leftStr = document.querySelector('.leftStr');
+const button__number = document.querySelector('.slider__button__number');
+const rightStr = document.querySelector('.rightStr');
+const lastStr = document.querySelector('.lastStr');
+
+let maxStr = 8
+function maxStrF(){
+    if(document.body.clientWidth < 768){
+        maxStr = 16
+    }
+    if(document.body.clientWidth >= 768){
+        maxStr = 8
+    }
+    if(document.body.clientWidth >= 1280){
+        maxStr = 6
+    }
+}
+maxStrF();
+
+function control(e) {
+    if(e.path[0].classList.contains('firstStr')){
+        button__number.innerText = '1';
+    }
+    if(e.path[0].classList.contains('leftStr')){
+        console.log('leftStr')
+        button__number.innerText = parseInt(button__number.innerText)-1
+    }
+    if(e.path[0].classList.contains('rightStr')){
+        console.log('rightStr')
+        button__number.innerText = parseInt(button__number.innerText)+1
+    }
+    if(e.path[0].classList.contains('lastStr')){
+        console.log('lastStr');
+        button__number.innerText = maxStr;
+    }
+    if(parseFloat(button__number.innerText) === 1){
+        firstStr.classList.add('arrow-disable');
+        firstStr.setAttribute("disabled","disabled");
+        leftStr.classList.add('arrow-disable');
+        leftStr.setAttribute("disabled","disabled");
+        lastStr.classList.remove('arrow-disable');
+        lastStr.removeAttribute("disabled");
+        rightStr.classList.remove('arrow-disable');
+        rightStr.removeAttribute("disabled");
+    }else if(parseFloat(button__number.innerText) === maxStr){
+        lastStr.classList.add('arrow-disable');
+        lastStr.setAttribute("disabled","disabled");
+        rightStr.classList.add('arrow-disable');
+        rightStr.setAttribute("disabled","disabled");
+        firstStr.classList.remove('arrow-disable');
+        firstStr.removeAttribute("disabled");
+        leftStr.classList.remove('arrow-disable');
+        leftStr.removeAttribute("disabled");
+    }else{
+        firstStr.classList.remove('arrow-disable');
+        firstStr.removeAttribute("disabled");
+        leftStr.classList.remove('arrow-disable');
+        leftStr.removeAttribute("disabled");
+        lastStr.classList.remove('arrow-disable');
+        lastStr.removeAttribute("disabled");
+        rightStr.classList.remove('arrow-disable');
+        rightStr.removeAttribute("disabled");
+    }
+}
+
+firstStr.addEventListener('click', control);
+leftStr.addEventListener('click', control);
+rightStr.addEventListener('click', control);
+lastStr.addEventListener('click', control);
+
 burger.addEventListener('click', openBurger);
 popup__close.addEventListener('click', openPopup);
 zatmen.addEventListener('click', closeModal);
-
-
 getPets();
