@@ -145,6 +145,9 @@ const Keyboard = {
     if (typeof this.eventHandlers[handlerName] == "function") {
       this.eventHandlers[handlerName](this.properties.value);
     }
+    if(document.querySelectorAll(".use-keyboard-input")[0].value.length !== 0){
+      document.querySelectorAll(".use-keyboard-input")[0].focus()
+    }
   },
 
   _toggleCapsLock() {
