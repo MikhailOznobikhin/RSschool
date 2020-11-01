@@ -77,6 +77,36 @@
   background: #08ff00;
 }
 
+.keyboard__langEn::after {
+  content: '';
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__langEn::after {
+  background: #08ff00;
+}
+
+.keyboard__langRu::after {
+  content: '';
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__langRu::after {
+  background: #08ff00;
+}
+
 .keyboard__key--dark {
   background: rgba(0, 0, 0, 0.25);
 }
