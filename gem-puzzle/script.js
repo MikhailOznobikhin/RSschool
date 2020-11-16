@@ -1,4 +1,6 @@
 const body = document.body;
+const countItems = 4;
+let randMas = []
 
 function GenHead(){
     let header = document.createElement('header');
@@ -30,12 +32,11 @@ function GenMain(){
 
     // рандом
     let mas = []
-    let randMas = []
-    for(let i =0; i <=15; i++){
+    for(let i =0; i < countItems*countItems; i++){
         mas.push(i)
     }
 
-    while (randMas.length < 16){
+    while (randMas.length < countItems*countItems){
         let a = Math.floor(Math.random()*mas.length)
         randMas.push(mas.splice(a,1)[0])
     }
@@ -46,13 +47,48 @@ function GenMain(){
         if(e !== 0){
             tempDiv.classList.add('item')
             tempDiv.innerHTML = e
+        }else{
+            tempDiv.classList.add('emp')
         }
         divM.appendChild(tempDiv)
     })
-
     body.appendChild(divM)
+    addEvent();
 }
 
+function moveItem(e){
+    let index = randMas.indexOf(parseInt(e.target.innerHTML))
+    let indexZero = randMas.indexOf(0)
+    
+    let indZi = indexZero%4
+    let indZj = parseInt(indexZero/4)
+
+    let indNi = index%4
+    let indNj = parseInt(index/4)
+    // console.log(`Zero: (${indZi};${indZj})`)
+    // console.log(`Точка: (${indNi};${indNj})`)
+    
+    if(Math.abs(indZi - indNi) + Math.abs(indZj - indNj) === 1){
+        let empDiv = document.getElementsByClassName('emp')[0]
+        randMas[indexZero] = randMas[index]
+        randMas[index] = 0 
+        
+        empDiv.classList.add('item')
+        empDiv.innerHTML = e.target.innerHTML
+        empDiv.classList.remove('emp')
+        document.getElementsByClassName('emp')[0]
+        e.target.classList.remove('item')
+        e.target.classList.add('emp')
+        e.target.innerHTML = ''        
+    }
+}
+
+
+function addEvent(){
+    for(let i = 0; i < countItems*countItems; i++){
+        body.children[2].children[i].addEventListener('click', moveItem)
+    }
+}
 
 
 GenHead();
