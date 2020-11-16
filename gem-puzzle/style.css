@@ -8,11 +8,12 @@ header{
     padding-bottom: 10px;
 }
 button{
-    padding: 4px;
+    padding: 10px;
     background: #6d74dd;
-    border-radius: 5%;
+    border-radius: 10%;
     font-size: 1.1rem;
     color: aliceblue;
+    cursor: pointer;
 }
 .main{
 
@@ -38,4 +39,11 @@ button{
     font-size: 2rem;
     background: #4daf97;
     border-radius: 5px;
+    user-select: none;
+    transition: all .3s;
+}
+.item:hover{
+    background-color: aquamarine;
+    transition: all .3s;
+    cursor: pointer;
 }
