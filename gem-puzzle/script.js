@@ -1,11 +1,40 @@
 const body = document.body;
-const countItems = 4;
+let countItems = localStorage.getItem('countItems') !== null ? localStorage.getItem('countItems') :  4; 
 let randMas = []
 let mas = []
 let otv = []
-let pause = false
-let move = 0;
-let time = 0
+let pause = true
+let move = localStorage.getItem('move') !== null ? localStorage.getItem('move') :  0; 
+let time = localStorage.getItem('time') !== null ? localStorage.getItem('time') :  0; 
+
+function clear(){
+    console.log('clear')
+
+    localStorage.removeItem('countItems');
+    localStorage.removeItem('time');
+    localStorage.removeItem('move');
+    localStorage.removeItem('randMas');
+    time = 0
+    move = 0
+    randMas = []
+    mas = []
+    otv = []
+    
+    body.children[1].children[0].children[0].innerHTML = 'Time: <span class="time">00:00</span>';
+    body.children[1].children[1].children[0].innerHTML = 'Move: <span class="move">0</span>';
+    v = document.getElementsByClassName('main')[0]
+    body.removeChild(v)
+}
+
+function modalControl(){
+    if(document.getElementsByClassName("menuModal")[0].style.display === 'none'){
+        document.getElementsByClassName("menuModal")[0].style.display = 'block'
+        pause = true
+    }else{
+        document.getElementsByClassName("menuModal")[0].style.display = 'none'
+        pause = false
+    }
+}
 
 function GenHead(){
     let header = document.createElement('header');
@@ -22,28 +51,35 @@ function GenHead(){
 
     // время
     body.children[1].children[0].appendChild(timeP);
-    body.children[1].children[0].children[0].innerHTML = 'Time: <span class="time"></span>';
+    body.children[1].children[0].children[0].innerHTML = `Time: <span class="time">${time}</span>`;
     // ходы
     body.children[1].children[1].appendChild(moveP);
-    body.children[1].children[1].children[0].innerHTML = 'Move: <span class="move">0</span>';
+    body.children[1].children[1].children[0].innerHTML = `Move: <span class="move">${move}</span>`;
     // кнопка
     body.children[1].children[2].innerHTML = 'menu';
 }
 
 
+
 function GenMain(){
     let divM = document.createElement('div');
     divM.classList.add('main')
+    divM.style = `grid-template-columns: repeat(${countItems},1fr)`
+    // grid-template-columns: repeat(countItems, 1fr);
 
     // рандом
-    for(let i =0; i < countItems*countItems; i++){
+    for(let i =0; i < countItems**2; i++){
         mas.push(i)
         otv.push(i)
     }
-
-    while (randMas.length < countItems*countItems){
-        let a = Math.floor(Math.random()*mas.length)
-        randMas.push(mas.splice(a,1)[0])
+    if(localStorage.getItem('randMas') === null){    
+        while (randMas.length < countItems**2){
+            let a = Math.floor(Math.random()*mas.length)
+            randMas.push(mas.splice(a,1)[0])
+        }
+    }else{
+        randMas = localStorage.getItem('randMas').split(',');
+        randMas = randMas.map(e=> +e)
     }
     // заполнение рандомными блоками
     randMas.forEach(e =>{
@@ -57,6 +93,7 @@ function GenMain(){
         divM.appendChild(tempDiv)
     })
     body.appendChild(divM)
+    document.getElementsByTagName("button")[0].addEventListener('click', modalControl)
     addEvent();
 }
 
@@ -65,11 +102,11 @@ function moveItem(e){
     let index = randMas.indexOf(parseInt(e.target.innerHTML))
     let indexZero = randMas.indexOf(0)
     
-    let indZi = indexZero%4
-    let indZj = parseInt(indexZero/4)
+    let indZi = indexZero%countItems
+    let indZj = parseInt(indexZero/countItems)
 
-    let indNi = index%4
-    let indNj = parseInt(index/4)
+    let indNi = index%countItems
+    let indNj = parseInt(index/countItems)
     // console.log(`Zero: (${indZi};${indZj})`)
     // console.log(`Точка: (${indNi};${indNj})`)
     
@@ -87,8 +124,8 @@ function moveItem(e){
         e.target.innerHTML = '' 
         move++
         document.getElementsByClassName('move')[0].innerHTML = move
-        if(randMas === otv){
-            alert(`You win time: ${parseInt(time/60)} ${time%60}sec. moves: ${move}`)
+        if(randMas.join('') === otv.join('')){
+            alert(`You win time: ${parseInt(time/60)} min ${time%60} sec. moves: ${move}`)
         }      
     }
 }
@@ -110,12 +147,80 @@ function setTime(){
 }
 
 function addEvent(){
-    for(let i = 0; i < countItems*countItems; i++){
-        body.children[2].children[i].addEventListener('click', moveItem)
+    for(let i = 0; i < countItems**2; i++){
+        document.getElementsByClassName('main')[0].children[i].addEventListener('click', moveItem)
     }
 }
 
+function startGame(){
+    document.getElementsByClassName("menuModal")[0].style.display = "none";
+    pause = false;
+    clear();
+    GenMain();
+}
+function saveGame(){
+    localStorage.setItem('countItems', countItems);
+    localStorage.setItem('time', time);
+    localStorage.setItem('move', move);
+    localStorage.setItem('randMas', randMas);
+}
+function bestGame(){
+    console.log('bestGame')
+}
+function changeArea(e){
+    countItems = e.target.value
+}
 
-GenHead();
-GenMain();
-setTime();
+function addEventMenu(){
+    document.getElementsByClassName("menuModal")[0].children[0].children[0].addEventListener('click',startGame)
+    document.getElementsByClassName("menuModal")[0].children[0].children[1].addEventListener('click',saveGame)
+    document.getElementsByClassName("menuModal")[0].children[0].children[2].addEventListener('click',bestGame)
+    document.getElementsByTagName('select')[0].addEventListener('change', changeArea)
+}
+
+function GenMenu(){
+    let divMenu = document.createElement('div');
+    divMenu.classList.add('menuModal');
+    
+    let NMenu = document.createElement('li')
+    NMenu.innerHTML = "New Game"
+
+    let SMenu = document.createElement('li')
+    SMenu.innerHTML = "Saved Games"
+
+    let BMenu = document.createElement('li')
+    BMenu.innerHTML = "Best"
+
+    let ulMenu = document.createElement('ul')
+    ulMenu.appendChild(NMenu)
+    ulMenu.appendChild(SMenu)
+    ulMenu.appendChild(BMenu)
+
+    divMenu.appendChild(ulMenu)
+
+    let SelectMenu = document.createElement('select')
+    
+    for(let i=1; i <= 6; i++){
+        let option = document.createElement('option')
+        option.setAttribute('value', i+2)
+        option.innerHTML = `${i+2}x${i+2}`
+        if(i === 2){
+            option.setAttribute('selected',true)
+        }
+        SelectMenu.appendChild(option)
+    }
+    divMenu.appendChild(SelectMenu)
+    body.appendChild(divMenu)
+    addEventMenu()
+}
+
+// первый старт
+function init(){
+    GenHead();
+    GenMain();
+    GenMenu();
+    setTime();
+}
+
+init();
+
