@@ -1,6 +1,11 @@
 const body = document.body;
 const countItems = 4;
 let randMas = []
+let mas = []
+let otv = []
+let pause = false
+let move = 0;
+let time = 0
 
 function GenHead(){
     let header = document.createElement('header');
@@ -20,7 +25,7 @@ function GenHead(){
     body.children[1].children[0].children[0].innerHTML = 'Time: <span class="time"></span>';
     // ходы
     body.children[1].children[1].appendChild(moveP);
-    body.children[1].children[1].children[0].innerHTML = 'Move: <span class="move"></span>';
+    body.children[1].children[1].children[0].innerHTML = 'Move: <span class="move">0</span>';
     // кнопка
     body.children[1].children[2].innerHTML = 'menu';
 }
@@ -31,16 +36,15 @@ function GenMain(){
     divM.classList.add('main')
 
     // рандом
-    let mas = []
     for(let i =0; i < countItems*countItems; i++){
         mas.push(i)
+        otv.push(i)
     }
 
     while (randMas.length < countItems*countItems){
         let a = Math.floor(Math.random()*mas.length)
         randMas.push(mas.splice(a,1)[0])
     }
-
     // заполнение рандомными блоками
     randMas.forEach(e =>{
         tempDiv = document.createElement('div');
@@ -55,6 +59,7 @@ function GenMain(){
     body.appendChild(divM)
     addEvent();
 }
+
 
 function moveItem(e){
     let index = randMas.indexOf(parseInt(e.target.innerHTML))
@@ -79,10 +84,30 @@ function moveItem(e){
         document.getElementsByClassName('emp')[0]
         e.target.classList.remove('item')
         e.target.classList.add('emp')
-        e.target.innerHTML = ''        
+        e.target.innerHTML = '' 
+        move++
+        document.getElementsByClassName('move')[0].innerHTML = move
+        if(randMas === otv){
+            alert(`You win time: ${parseInt(time/60)} ${time%60}sec. moves: ${move}`)
+        }      
     }
 }
 
+function setTime(){
+    if(!pause){
+        time++
+        let sec = time%60
+        let min = parseInt(time/60)
+        if(String(sec).length < 2){
+            sec = `0${sec}`
+        }
+        if(String(min).length < 2){
+            min = `0${min}`
+        }
+        document.getElementsByClassName('time')[0].innerHTML = `${min}:${sec}`
+    }
+    setTimeout(setTime, 1000)
+}
 
 function addEvent(){
     for(let i = 0; i < countItems*countItems; i++){
@@ -93,3 +118,4 @@ function addEvent(){
 
 GenHead();
 GenMain();
+setTime();
