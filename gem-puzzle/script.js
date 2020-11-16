@@ -36,6 +36,18 @@ function modalControl(){
     }
 }
 
+// Audio
+function soundClick() {
+    var audio = new Audio(); 
+    audio.src = 'error.mp3'; 
+    audio.autoplay = true; 
+}
+function soundClickF() {
+    var audio = new Audio(); 
+    audio.src = 'true.mp3'; 
+    audio.autoplay = true; 
+  }
+
 function GenHead(){
     let header = document.createElement('header');
     let div = document.createElement('div');
@@ -111,6 +123,7 @@ function moveItem(e){
     // console.log(`Точка: (${indNi};${indNj})`)
     
     if(Math.abs(indZi - indNi) + Math.abs(indZj - indNj) === 1){
+        soundClickF()
         let empDiv = document.getElementsByClassName('emp')[0]
         randMas[indexZero] = randMas[index]
         randMas[index] = 0 
@@ -127,6 +140,8 @@ function moveItem(e){
         if(randMas.join('') === otv.join('')){
             alert(`You win time: ${parseInt(time/60)} min ${time%60} sec. moves: ${move}`)
         }      
+    }else{
+        soundClick()
     }
 }
 
@@ -152,6 +167,7 @@ function addEvent(){
     }
 }
 
+
 function startGame(){
     document.getElementsByClassName("menuModal")[0].style.display = "none";
     pause = false;
@@ -170,6 +186,7 @@ function bestGame(){
 function changeArea(e){
     countItems = e.target.value
 }
+
 
 function addEventMenu(){
     document.getElementsByClassName("menuModal")[0].children[0].children[0].addEventListener('click',startGame)
@@ -204,7 +221,11 @@ function GenMenu(){
         let option = document.createElement('option')
         option.setAttribute('value', i+2)
         option.innerHTML = `${i+2}x${i+2}`
-        if(i === 2){
+        
+        if(localStorage.getItem('countItems') !== null && +localStorage.getItem('countItems') === i+2){
+            option.setAttribute('selected',true)
+        }
+        else if( i === 2){
             option.setAttribute('selected',true)
         }
         SelectMenu.appendChild(option)
