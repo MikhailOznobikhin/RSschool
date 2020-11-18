@@ -9,8 +9,6 @@ let move = localStorage.getItem('move') !== null ? localStorage.getItem('move') 
 let time = localStorage.getItem('time') !== null ? localStorage.getItem('time') :  0; 
 
 function clear(){
-    console.log('clear')
-
     localStorage.removeItem('countItems');
     localStorage.removeItem('time');
     localStorage.removeItem('move');
@@ -78,7 +76,6 @@ function GenMain(){
     let divM = document.createElement('div');
     divM.classList.add('main')
     divM.style = `grid-template-columns: repeat(${countItems},1fr)`
-    // grid-template-columns: repeat(countItems, 1fr);
 
     // рандом
     for(let i =0; i < countItems**2; i++){
@@ -125,8 +122,6 @@ function moveItem(e){
 
     let indNi = index%countItems
     let indNj = parseInt(index/countItems)
-    // console.log(`Zero: (${indZi};${indZj})`)
-    // console.log(`Точка: (${indNi};${indNj})`)
     
     if(Math.abs(indZi - indNi) + Math.abs(indZj - indNj) === 1){
         soundClickF()
@@ -186,9 +181,8 @@ function saveGame(){
     localStorage.setItem('move', move);
     localStorage.setItem('randMas', randMas);
 }
-function bestGame(){
-    console.log('bestGame')
-}
+function bestGame(){}
+
 function changeArea(e){
     countItems = e.target.value
 }
