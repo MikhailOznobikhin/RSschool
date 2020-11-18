@@ -85,8 +85,11 @@ function GenMain(){
         mas.push(i)
         otv.push(i)
     }
-    otv1.push(b.slice(0,1))
+    // обратный ответ
+    otv1 = otv
+    otv1.push(otv1.slice(0,1))
     otv1 = otv1.flat()
+
     if(localStorage.getItem('randMas') === null){    
         while (randMas.length < countItems**2){
             let a = Math.floor(Math.random()*mas.length)
