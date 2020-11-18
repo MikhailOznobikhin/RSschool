@@ -3,6 +3,7 @@ let countItems = localStorage.getItem('countItems') !== null ? localStorage.getI
 let randMas = []
 let mas = []
 let otv = []
+let otv1 = []
 let pause = true
 let move = localStorage.getItem('move') !== null ? localStorage.getItem('move') :  0; 
 let time = localStorage.getItem('time') !== null ? localStorage.getItem('time') :  0; 
@@ -84,6 +85,8 @@ function GenMain(){
         mas.push(i)
         otv.push(i)
     }
+    otv1.push(b.slice(0,1))
+    otv1 = otv1.flat()
     if(localStorage.getItem('randMas') === null){    
         while (randMas.length < countItems**2){
             let a = Math.floor(Math.random()*mas.length)
@@ -137,7 +140,7 @@ function moveItem(e){
         e.target.innerHTML = '' 
         move++
         document.getElementsByClassName('move')[0].innerHTML = move
-        if(randMas.join('') === otv.join('')){
+        if(randMas.join('') === otv.join('') || randMas.join('') === otv1.join('') ){
             alert(`You win time: ${parseInt(time/60)} min ${time%60} sec. moves: ${move}`)
         }      
     }else{
