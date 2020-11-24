@@ -16,7 +16,6 @@ button{
     cursor: pointer;
 }
 .main{
-
     display: grid;
     position: relative;
     margin: auto;
