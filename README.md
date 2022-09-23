@@ -7,4 +7,4 @@ deploy:
 3) https://mikhailoznobikhin.github.io/RSschool/momentum/
 4) https://mikhailoznobikhin.github.io/RSschool/virtual-keyboard/
 5) https://mikhailoznobikhin.github.io/RSschool/webdev/
-6) shelter пока учился сделал норм, сейчас надо разбираться что я сделал с ним после сдачи)
+6) https://mikhailoznobikhin.github.io/RSschool/shelter/pages/main/main.html
