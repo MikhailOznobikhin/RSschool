@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700;900&display=swap'); */
 
@@ -160,10 +161,8 @@ h1{
 }
 .textSlider{
     position: absolute;
-
     margin-left: 690px;
     margin-top: 82px;
-
     width: 80px;
     font-size: 17px;
 }
@@ -175,7 +174,6 @@ h1{
     font-size: 14px;
     margin: 20px 0 13px 1px;
     line-height: 20px;
-    letter-spacing: 0.18px;
 }
 .impl{
     margin: 17px 0px 0px 1px;
@@ -185,8 +183,6 @@ h1{
 .sugnUp{
     position: absolute;
     color: white;
-
-
     margin: 179px 0 0 610px;
     width: 100%;
     letter-spacing: 1px;
@@ -205,7 +201,6 @@ h1{
     border: none;
     width: 66px;
     height: 46.5px;
-
 }
 
 .buttonDownload{

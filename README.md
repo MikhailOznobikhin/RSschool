@@ -1,5 +1,6 @@
 # mikhailoznobikhin-JS2020Q3
 Private repository for @mikhailoznobikhin
+
 deploy:
 1) https://mikhailoznobikhin.github.io/RSschool/calculator/
 2) https://mikhailoznobikhin.github.io/RSschool/gem-puzzle/
