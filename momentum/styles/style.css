@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background-size: cover;
+  color: #fff;
+  transition: background-image 1s ease-in-out;
+  padding: 0;
+  margin: 0;
+}
+
+body:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .3);
+  z-index: -1;
+}
+
+.time {
+  font-size: 8rem;
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.bt {
+  width: 60px;
+  height: 60px;
+  border: 0;
+  background: url("../assets/Button-PNG.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(1);
+  margin: 10px;
+  transition: 1s;
+}
+
+.bt:hover {
+  cursor: pointer;
+  filter: grayscale(.8);
+  transition: 1s;
+}
+
+.bt:active,
+.bt:focus {
+  outline: 0;
+}
+
+.bt:active {
+  transform: scale(1.02)
+}
+
+.quote {
+  font: 1.2rem Georgia, serif;
+  margin: 1rem 0;
+  background: rgba(133, 133, 180, .3);
+  padding: 1em;
+  border-radius: 1em;
+  display: flex;
+  transition: 0.5s ease-in-out;
+  width: 60%;
+}
+
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+
+.quote figcaption {
+  text-align: right;
+}
+
+.btn {
+  position: absolute;
+  margin: 0 0;
+  top: 1rem;
+  left: 1rem;
+}
+
+.btnQ {
+  margin: auto 0;
+}
+.userGorod{
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 700px) {
+  .time {
+    font-size: 2.5rem;
+  }
+  .quote{
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+  .quote figcaption,
+.quote blockquote {
+  margin: 0.25em;
+}
+  .btn{
+    position: inherit;
+  }
+  h1{
+    margin-bottom: 1rem;
+  }
+}
