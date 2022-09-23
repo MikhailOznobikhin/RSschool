@@ -51,7 +51,7 @@ p {
   width: 60px;
   height: 60px;
   border: 0;
-  background: url("/assets/Button-PNG.png");
+  background: url("../assets/Button-PNG.png");
   background-size: contain;
   background-repeat: no-repeat;
   filter: grayscale(1);

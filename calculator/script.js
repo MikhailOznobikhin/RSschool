@@ -177,6 +177,3 @@ class Calculator {
       console.log('работай')
     }
   })
-
-
-
